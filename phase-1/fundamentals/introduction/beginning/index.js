@@ -78,8 +78,61 @@ console.log(JSON.stringify(prices));
 
 // CHALLENGES
 // Try these practice problems on your own to reinforce this lesson's material :)
+
 // 1. Write a function named `sum` that takes an array of `numbers` and returns its sum.
+function sum(numbers){
+    const numLen = numbers.length;
+    let mem = 0;
+    console.log(`Number length for sum() = ${numLen}`);
+
+    for (let i=0;i<numLen;i++){
+        mem=numbers[i]+mem;
+    }
+    
+    console.log(`sum = ${mem}`);
+    return mem;
+}
+
+sum([1,2,3,5,9]);
+
 // 2. Write a function named `double` that takes an array of `numbers` and doubles each of its values.
+function double(numbers){
+    const numLen = numbers.length;
+    let mem = 0;
+    console.log(`Number length for double() = ${numLen}`);
+
+    for (let i=0;i<numLen;i++){
+        mem=numbers[i]*2+mem;
+    }
+    console.log(`sum of doubled array values = ${mem}`);
+    return mem;
+}
+
+double([2,5,7]);
+
 // 3. Write a function named `lowercase` that takes an array of `words` and returns a lowercased copy.
+function lowercase(words){
+    const wordLen = words.length;
+    let copyWords = [];
+    console.log(`Words in array for lowercase() = ${wordLen}`);
+    
+    for (let i=0;i<wordLen;i++){
+        copyWords.push(words[i].toLowerCase());
+    }
+    console.log(words);
+    console.log(copyWords);
+    return copyWords;
+}
 
+lowercase(["Joe", "Max"]);
 
+/*
+function lowercase(words){
+    let copyWords = words;
+    copyWords=JSON.stringify(words);
+    toCharArray(copyWords);
+    console.log(copyWords);
+    return copyWords.toLowerCase();
+
+}
+*/
