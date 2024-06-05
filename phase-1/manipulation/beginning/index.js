@@ -27,7 +27,7 @@ Challenges
 // -> textContent is a property of text nodes (e.g. h1, p) that contain their text.
 console.log(document.querySelector("h1")); //select first h1 element
 console.log(document.querySelector("#tomorrow")); //select element with id = tomorrow
-console.log(document.querySelector("#forever").textContent; //selects then modifies textContent of #forever.
+console.log(document.querySelector("#forever").textContent); //selects then modifies textContent of #forever.
 
 // ~ Update/Modify a node's attributes
 // -> To modify an attribute, just use = after the attribute name in object dot notation
@@ -51,6 +51,12 @@ document.querySelector("div").append(pElement);
 //        Books
 //        • The Shining
 // 2. Replace the <strong> element with a newly created one.
+/*
+function displayList (nam,arr){
+    const liElement = document.createElement("ul");
+    arr.forEach((book) => {liElement.});
+    document.querySelector('#dates').append(liElement);
+}
 
-
-
+displayList("Books",["The Shining, The Bible"]);
+*/
