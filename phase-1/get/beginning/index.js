@@ -53,35 +53,53 @@ getPokemon("squirtle");
 // ~ Challenge: Make a GET request to an API of your choice!
 
 //polygon.io API key = 1N9taZpI2W8P93B4H2WNYn3Fjk4aF0M0
-
 //Authorization: bearer 1N9taZpI2W8P93B4H2WNYn3Fjk4aF0M0
 
-async function stock(ticker){
-    try {
-        //create, fill, append header to body
-        const stockHeader = document.createElement("h2");
-        
-        stockHeader.textContent = "Stocks";
-        document.querySelector("body").append(stockHeader);
+//create, id, fill, and append header to body
 
-        //create, id, append to #
-        
-        const response = await fetch("https://api.polygon.io/v2/aggs/ticker/"+ticker+"/range/1/day/2023-01-09/2023-01-09?apiKey=1N9taZpI2W8P93B4H2WNYn3Fjk4aF0M0")
-        const stats = await response.json();
-        console.log(stats);
-        const stockList = document.createElement("li");
-        const volume = stats.results[0].v;
-        stockList.textContent = volume;
-        document.querySelector("body").append(volume);
-        
-    } catch (error){
-        console.error(error);
-    }    
-};
-stock("BABA");
+const stockHeader = document.createElement("h1");
+stockHeader.id = "stock-header";
+stockHeader.textContent = "Stocks";
+document.querySelector("body").append(stockHeader);
 
-/*.then((response)=> {return response.json();})
-            .then(stats => {
-            const volume = stats.results[0].v;
-            } catch (error) {
-            });*/
+//create, id, form for stock symbol
+const stockForm = document.createElement("form");
+stockForm.id = "stock-form";
+document.querySelector("body").append(stockForm);
+
+//create, id, text input for stock symbol
+const stockInput = document.createElement("input");
+stockInput.id = "stock-input";
+document.querySelector("#stock-form").append(stockInput);
+
+const symbolHeader = document.createElement("h2");
+document.querySelector("body").append(symbolHeader);
+
+//create, id, and append ul to #stocks
+const stockList = document.createElement("ul");
+stockList.id = "stock-list";
+document.querySelector("body").append(stockList);
+
+const stockEntries = document.createElement("li");
+
+document.querySelector("#stock-form").addEventListener("submit",(event)=>{
+    event.preventDefault();
+    event === "submit";
+    const ticker = event.target["stock-input"].value.toUpperCase();
+    
+    //make sync request to api, convert response, assign endpoint result to variable
+    fetch("https://api.polygon.io/v2/aggs/ticker/"+ticker+"/range/1/day/2023-01-09/2023-01-09?apiKey=1N9taZpI2W8P93B4H2WNYn3Fjk4aF0M0")
+    .then((response)=> {return response.json();})
+    .then(convertedResponse=>{
+        const price = convertedResponse.results[0].c;
+        symbolHeader.textContent = ticker;
+        stockEntries.textContent = "Last closing price: $"+price;
+        document.querySelector("#stock-list").append(stockEntries);
+        console.log(ticker+" price: "+price);
+    });
+});
+
+
+
+//const yesterday = new Date(value);
+//console.log(yesterday);
