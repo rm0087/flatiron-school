@@ -55,7 +55,33 @@ getPokemon("squirtle");
 //polygon.io API key = 1N9taZpI2W8P93B4H2WNYn3Fjk4aF0M0
 
 //Authorization: bearer 1N9taZpI2W8P93B4H2WNYn3Fjk4aF0M0
-/*
-fetch("https://api.polygon.io/v2/aggs/ticker/AAPL/range/1/day/2023-01-09/2023-01-09?apiKey=1N9taZpI2W8P93B4H2WNYn3Fjk4aF0M0")
-.then((response)=> {return response.json();});
-*/
+
+async function stock(ticker){
+    try {
+        //create, fill, append header to body
+        const stockHeader = document.createElement("h2");
+        
+        stockHeader.textContent = "Stocks";
+        document.querySelector("body").append(stockHeader);
+
+        //create, id, append to #
+        
+        const response = await fetch("https://api.polygon.io/v2/aggs/ticker/"+ticker+"/range/1/day/2023-01-09/2023-01-09?apiKey=1N9taZpI2W8P93B4H2WNYn3Fjk4aF0M0")
+        const stats = await response.json();
+        console.log(stats);
+        const stockList = document.createElement("li");
+        const volume = stats.results[0].v;
+        stockList.textContent = volume;
+        document.querySelector("body").append(volume);
+        
+    } catch (error){
+        console.error(error);
+    }    
+};
+stock("BABA");
+
+/*.then((response)=> {return response.json();})
+            .then(stats => {
+            const volume = stats.results[0].v;
+            } catch (error) {
+            });*/
