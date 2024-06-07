@@ -13,6 +13,19 @@ Objectives
 */
 
 // Let's try making a GET request to display existing data on the page.
+fetch("http://localhost:3000/candies")
+.then(response => response.json())
+.then(candies => {
+    console.log(candies);
+})
+.catch(error => console.error(error));
+
+fetch("http://localhost:3000/cookies/2")
+.then(response => response.json())
+.then(cookie => {
+    console.log(cookie);
+})
+.catch(error => console.error(error));
 
 // Now, let's trigger a POST request when the user submits the form,
 // so that they can add data to the database! Remember to think about

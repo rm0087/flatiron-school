@@ -1,0 +1,28 @@
+{
+    "candies": [
+        {
+            "id": "1",
+            "name": "Skittles",
+            "chocolate": false
+        },
+        {
+            "id": "2",
+            "name": "Starburst",
+            "chocolate": false
+        }
+    ],
+    "cookies": [
+        {
+            "id": "1",
+            "name": "Subway"   
+        },
+        {
+            "id": "2",
+            "name": "Tate's"
+        },
+        {
+            "id": "3",
+            "name": "OREO"
+        }
+    ]
+}
