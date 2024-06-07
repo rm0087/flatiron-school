@@ -88,7 +88,7 @@ document.querySelector("#stock-form").addEventListener("submit",(event)=>{
     const ticker = event.target["stock-input"].value.toUpperCase();
     
     //make sync request to api, convert response, assign endpoint result to variable
-    fetch("https://api.polygon.io/v2/aggs/ticker/"+ticker+"/range/1/day/2023-01-09/2023-01-09?apiKey=1N9taZpI2W8P93B4H2WNYn3Fjk4aF0M0")
+    fetch("https://api.polygon.io/v2/aggs/ticker/"+ticker+"/prev?adjusted=true&apiKey=1N9taZpI2W8P93B4H2WNYn3Fjk4aF0M0")
     .then((response)=> {return response.json();})
     .then(convertedResponse=>{
         const price = convertedResponse.results[0].c;
