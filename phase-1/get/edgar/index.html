@@ -11,9 +11,9 @@
     <div id = "main-container">
       <div id = "stock-quote">
         <form id = "stock-form">
-        <input id = "ticker-input" type = "text">
+          <input id = "ticker-input" type = "text">
         </form>
-        <h1 id = "stock-quote-header">TEST</h1>
+        <h1 id = "stock-quote-header"></h1>
           <table id = "stock-quote-table">
             <tr>
               <td>Price</td>
@@ -23,13 +23,13 @@
             </tr>
             <tr>
               <td>Market Cap.</td>
-              <td></td>
+              <td id="market-cap"></td>
               <td>Shares Outstanding</td>
-              <td></td>
+              <td id="shares-outstanding"></td>
             </tr>
             <tr>
-              <td></td>
-              <td></td>
+              <td>Cash</td>
+              <td id="cash"></td>
               <td></td>
               <td></td>
             </tr>
@@ -41,6 +41,31 @@
             </tr>
           </table>
           <td></td>
+      </div>
+      <div id="graph-container">
+        <h1>Financial Statements</h1>
+        <table id = "accounts">
+          <tr>
+            <td>Revenue</td>
+            <td id="revenue"></td>
+          </tr>
+          <tr>
+            <td>Cost of Goods Sold</td>
+            <td id="cogs"></td>
+          </tr>
+          <tr>
+            <td>Gross Profit</td>
+            <td id ="gross-profit"></td>
+          </tr>
+          <tr>
+            <td>Operating Expenses</td>
+            <td id ="op-ex"></td>
+          </tr>
+          <tr>
+            <td>Net Income</td>
+            <td id ="net-income"></td>
+          </tr>
+        </table>
       </div>
     </div>
     
