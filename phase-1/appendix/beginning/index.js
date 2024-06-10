@@ -45,29 +45,53 @@ Takeaways
 // ~ Immediate Invocation
 console.log("~~IMMEDIATE INVOCATION~~");
 // We can immediately invoke functions upon declaration with (definition)(arguments).
+(function sayHi(name){
+   console.log("Hi, " + name + "!")})("Sakib");
 
 // ~ Context
 console.log("~~CONTEXT~~");
 // -> A function's **context** is an object it can access with the keyword `this`.
 // -> We can use the function methods `apply`, `call`, and `bind` to define a function's context.
+//This is a function that constructs and console.log() out of a parameter and the function's context.
+function greet(end){console.log("Hello, " + this.name + end)};
 // -> function.apply(this, [arguments]);
 //    executes `function` with an object reference and array of arguments.
+// Call 'greet' with a context of {name: "Ray"} and an end of "!"
+greet.apply({name: "Ray"}, ["!"]);
 // -> function.call(this, ...arguments);
 //    executes `function` with an object reference and list of arguments.
+greet.call({name: "Yidy"}, "!");
 // -> function.bind(this, ...arguments);
 //    returns a function with an object reference and array of arguments.
+const greetFelix = greet.bind({name: "Felix"}, ".");
+greetFelix();
 
 
 // ~ Advanced Array Methods
 console.log("~~ADVANCED ARRAY METHODS~~");
 // `forEach` isn't the only array method out there. Let's learn about a few more!
+const names = ["Sakib", "Elizabeth", "Pedro", "Marcus"];
+//For each name in names, print name to the console.
+names.forEach(name => {console.log(name);});
 // Hint: For the purposes of Phase 2, `filter` and `map` are most relevant.
 // -> array.find() returns the first element that satisfies some condition.
+console.log(names.find(name => {return name.length>5}));
+//or find a specific string
+console.log(names.find(name => {return name === "Elizabeth"}));
 // -> array.reduce() accumulates a value by applying a function to each element in an array.
+const numbers = [1,2,3];
+console.log(numbers.reduce((sum, number) => {return sum + number}));
 // -> array.filter() returns an array with only the elements that satisfy some condition.
+console.log(names.filter(name => {return name.length>5}));
 // -> array.map() returns an array where each element has been transformed in some specified way.
+console.log(names.map(name => {return name.length}));
 
 // ~ Challenges
+ // example array for #1 and #2
+const phrases = ["hello, there!", "how are you?", "It's me!"];
 // 1. Write a function that takes an array of sentences and returns only those that are questions.
+console.log(phrases.filter(phrase => {return phrase.endsWith("?")}));
+
 // 2. Write a function that takes an array of lowercased sentences and returns them capitalized.
-const phrases = ["hello, there!", "how are you?", "It's me!"]; // example array for #1 and #2
+console.log(phrases.map(phrase =>{return phrase.charAt(0).toUpperCase()+phrase.slice(1)}));
+ 
