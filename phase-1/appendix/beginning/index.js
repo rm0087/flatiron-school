@@ -94,4 +94,3 @@ console.log(phrases.filter(phrase => {return phrase.endsWith("?")}));
 
 // 2. Write a function that takes an array of lowercased sentences and returns them capitalized.
 console.log(phrases.map(phrase =>{return phrase.charAt(0).toUpperCase()+phrase.slice(1)}));
- 
