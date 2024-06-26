@@ -26,3 +26,5 @@ export default function App() {
     </div>
   );
 }
+
+// <Card card = {card} randomize = {randomize}>
