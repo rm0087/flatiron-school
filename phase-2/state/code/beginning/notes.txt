@@ -1,0 +1,8 @@
+export default function Biography(proopps){
+    return (
+        <h1>
+            {props.name} ({props.born}{props.died && `-${props.died}`})
+            : {props.summary}
+        </h1>
+    )
+}
