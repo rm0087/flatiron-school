@@ -1,11 +1,13 @@
-export default function Card() {
+
+
+export default function Card({cardStringProp, randomizeProp}) {
     return (
         <h2 style={{ padding: "1rem",
                      display: "flex", flexDirection: "column", gap: "12px", alignItems: "center",
                      border: "solid black", borderRadius: "10px"
         }}>
-            Ace of Spades
-            <button>Nah.</button>
+            {cardStringProp}
+            <button onClick={randomizeProp}>Nah.</button>
         </h2>
     )
   }
