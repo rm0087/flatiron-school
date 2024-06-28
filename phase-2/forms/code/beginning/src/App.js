@@ -1,5 +1,15 @@
 /*
 
+When a user fills out a form, they fire countless events.
+Most of these events affect a form's input values.
+Ergo, it makes sense to hold and update input values in state!
+
+
+
+
+
+
+
 Phase 2 -> Forms
 By Sakib Rasul
 
