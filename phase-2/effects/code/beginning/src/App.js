@@ -10,9 +10,16 @@
      with JSON Server and fetch articles from there on this component's first render.
 
 */
+import {useState, useEffect} from 'react';
+
 
 export default function App() {
-  const articles = [ { id: 0, title: "Why I Fetch Data", author: "Max the Beagle" } ];
+  const [articles, setArticles] = useState([])
+  fetch("http://localhost:3000/articles")
+  .then(response=> response.json())
+  .then(articlesInDatabase=> {setArticles(articlesInDatabase)})
+
+
 
   return (
     <div style={{ minHeight: "100vh",
