@@ -14,15 +14,40 @@ Core Deliverables
 */
 
 import Form from './Form';
+import {useState, useEffect} from 'react';
 
 export default function App() {
+  const[dishes,setDishes] = useState([])
+  useEffect(()=> {
+    fetch("http://localhost:3000/menu")
+    .then(response => response.json())
+    .then(items => setDishes(items))
+  }, [])
+
+  function addDish(e,name,price){
+    e.preventDefault();
+    fetch("http://localhost:3000/menu",{
+      method:"POST",
+      headers:{"Content-Type": "application/json"},
+      body: JSON.stringify({
+        name: name,
+        price: price
+      })
+    })
+    .then(response => response.json())
+    .then(newDish => {setDishes([...dishes, newDish])})
+  }
+
   return (
     <main>
       <h1>Chez Flatiron</h1>
+      {dishes.map(dish => 
+        <p key={dish.id}>{dish.name} | ${dish.price}</p>
+      )}
       <section>
-        <h2>Featured Dish: NAME!</h2>
-        <div>NAME | $PRICE<br/></div>
-        <h3>Submit a New Dish! <Form /></h3>
+        <h2>Featured Dish:!</h2>
+        <div>NAME | $<br/></div>
+        <h3>Submit a New Dish! <Form addDish={addDish}/></h3>
       </section>
     </main>
   );
