@@ -21,28 +21,51 @@ export default function App() {
   useEffect(()=> {
     fetch("http://localhost:3000/menu")
     .then(response => response.json())
-    .then(items => setDishes(items))
+    .then(items => {setDishes(items)})
   }, [])
 
   function addDish(e,name,price){
     e.preventDefault();
+    fetch("http://localhost:3000/menu")
+    .then(response => response.json())
+    .then(items =>{console.log(items);
+      let sameItem = items.find(item => name===item.name);
+      sameItem? setDishes(items): postDish(e,name,price)
+    })
+  }
+  
+  
+  function postDish(e,name,price){
+    e.preventDefault();
     fetch("http://localhost:3000/menu",{
       method:"POST",
-      headers:{"Content-Type": "application/json"},
+      headers:{"Content-Type": "application/json",
+        "Accept": "application/json"
+      },
       body: JSON.stringify({
         name: name,
         price: price
       })
     })
     .then(response => response.json())
-    .then(newDish => {setDishes([...dishes, newDish])})
+    .then(newDish => {setDishes([...dishes, newDish])
+    })
   }
+
+  const [radio, setRadio] = useState(0)
+  
+  function handleRadio(e){setRadio(e.target.id); console.log(e.target.id)}
 
   return (
     <main>
       <h1>Chez Flatiron</h1>
       {dishes.map(dish => 
-        <p key={dish.id}>{dish.name} | ${dish.price}</p>
+        <> 
+          <label className="product-labels" onClick={(e)=>handleRadio(e)}> 
+            <input id ={dish.id}type="radio" name="dish-button"/>
+              <p key={dish.id}>{dish.name} | ${dish.price}</p>
+          </label>
+        </>
       )}
       <section>
         <h2>Featured Dish:!</h2>
