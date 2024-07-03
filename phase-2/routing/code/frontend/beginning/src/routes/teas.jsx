@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import Form from "../form";
+import { useLoaderData } from "react-router-dom";
 
 // This component will render in the root's outlet at `/teas`.
 export default function Teas() {
+    console.log(useLoaderData());
+    
     // Access this route's loader data and store it in state.
     const [ teas, setTeas ] = useState([]);
 

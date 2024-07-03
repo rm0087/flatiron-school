@@ -18,13 +18,38 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 // Tailwind CSS (along with ../tailwind.config.js)
 import "./index.css";
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import About from './routes/about';
+import Teas from './routes/teas';
+import Root from './routes/root';
+import Welcome from './welcome';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    children: [
+      {
+        path: "/",
+        element: <Welcome />
+      },
+      {
+        path: "about",
+        element: <About />
+      },
+      {
+        path: "teas",
+        element: <Teas />,
+        loader: async () => fetch("http://localhost:3000/teas").then(response => response.json())
+      }
+    ]
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <h1 className='text-2xl hover:italic font-semibold'>
-      Sakib's Tea House
-    </h1>
+    <RouterProvider router={router}/>
   </React.StrictMode>
 );
 
