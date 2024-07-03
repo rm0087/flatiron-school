@@ -12,6 +12,6 @@ export default function Form({addDish}) {
             <input name="name" type="text" placeholder="Name" onChange={changeName} value={name} />{` `}
             <input name="price" type="number" placeholder="0" min="0" onChange={changePrice} value={price}/>{` `}
             <input type="submit" value="Submit" />
-      </form>
+        </form>
     )
 }
